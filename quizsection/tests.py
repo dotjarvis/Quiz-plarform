@@ -1,7 +1,13 @@
-from django.test import TestCase
+from django.test import TestCase, Client
 from django.utils import timezone
 from datetime import date, datetime
+
+
 from .models import Person, Question, Answer
+from django.urls import reverse
+
+from django.contrib.auth.models import User
+from quizsection.forms import QuestionForm, AnswerForm
 
 
 class PersonTestCase(TestCase):
@@ -31,11 +37,6 @@ class PersonTestCase(TestCase):
         self.assertEqual(john.username, "johndoe")
 
 
-from django.test import Client, TestCase
-from django.urls import reverse
-from django.contrib.auth.models import User
-from quizsection.models import Question, Answer
-from quizsection.forms import QuestionForm, AnswerForm
 
 class TestViews(TestCase):
 

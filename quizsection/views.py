@@ -13,8 +13,8 @@ from .decorators import login_required
 
 
 from django.contrib.auth.forms import AuthenticationForm
-from django.contrib.auth.decorators import login_required
-from django.contrib.auth import login, authenticate
+# from django.contrib.auth.decorators import login_required
+from django.contrib.auth import login, logout, authenticate
 
 
 from quizsection.forms import *
@@ -57,6 +57,11 @@ def loginPage(request):
 @login_required
 def home(request):
     return render(request, 'quizsection/home.html')
+
+
+def logoutUser(request):
+    logout(request)
+    return redirect('login')
 
 
 @csrf_exempt
