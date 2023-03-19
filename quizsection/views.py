@@ -13,7 +13,6 @@ from .decorators import login_required
 
 
 from django.contrib.auth.forms import AuthenticationForm
-# from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login, logout, authenticate
 
 
@@ -56,6 +55,7 @@ def loginPage(request):
 
 @login_required
 def home(request):
+
     return render(request, 'quizsection/home.html')
 
 
@@ -72,7 +72,7 @@ def post_question(request):
         form = QuestionForm(request.POST)
         if form.is_valid():
             question = form.save(commit=False)
-            question.author = request.user
+            question.person = request.user
             question.save()
             return JsonResponse({'success': True, 'message': 'Question posted successfully.'})
         else:
@@ -83,7 +83,7 @@ def post_question(request):
 
 @csrf_exempt
 def get_questions(request):
-    # all Questions
+    # all questions
     if request.method == 'GET':
         questions = Question.objects.all()
         data = []
@@ -92,8 +92,8 @@ def get_questions(request):
             data.append({
                 'id': question.id,
                 'description': question.description,
-                'author': question.author.username,
-                'answers': [{'id': answer.id, 'description': answer.description, 'author': answer.author.username} for answer in answers]
+                'person': question.person.username,
+                'answers': [{'id': answer.id, 'description': answer.description, 'person': answer.person.username} for answer in answers]
             })
         return JsonResponse({'success': True, 'data': data})
     else:
@@ -109,8 +109,8 @@ def get_question(request, question_id):
         data = {
             'id': question.id,
             'description': question.description,
-            'author': question.person.user.username,
-            'answers': [{'id': answer.id, 'description': answer.description, 'author': answer.person.user.username} for answer in answers]
+            'person': question.person,
+            'answers': [{'id': answer.id, 'description': answer.description, 'person': answer.person.user.userusername} for answer in answers]
         }
         return JsonResponse({'success': True, 'data': data})
     except Question.DoesNotExist:
@@ -124,7 +124,7 @@ def get_question(request, question_id):
 def delete_question(request, question_id):
     question = get_object_or_404(Question, id=question_id)
 
-    if question.author != request.user:
+    if question.person != request.user:
         return JsonResponse({'success': False, 'message': 'You are not authorized to delete this question.'})
 
     question.delete()
@@ -145,7 +145,7 @@ def post_answer(request, question_id):
             # create a new answer object with the form data
             answer = form.save(commit=False)
             answer.question = question
-            answer.author = request.user
+            answer.person = request.user
             answer.save()
 
             # return a success response

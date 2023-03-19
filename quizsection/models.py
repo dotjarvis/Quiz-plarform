@@ -39,7 +39,7 @@ class Person(models.Model):
 
 
 class Question(models.Model):
-    person = models.ForeignKey(Person, null=True, on_delete=models.SET_NULL)
+    person = models.ForeignKey(Person, null=True, on_delete=models.CASCADE, related_name='questions')
     description = models.TextField(max_length=400)
     date_created = models.DateTimeField(auto_now_add=True)
 
