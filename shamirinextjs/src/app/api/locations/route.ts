@@ -7,8 +7,6 @@ export async function fetchCharacter(request: string) {
     const res = await fetch(`${request}`);
     const character = await res.json();
 
-    console.log(character);
-
     return character;
   } catch (error) {
     console.error(error);
