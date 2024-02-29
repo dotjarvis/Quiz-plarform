@@ -1,6 +1,8 @@
 "use client";
 
+import { redirect } from "next/dist/server/api-utils";
 import { useEffect, useState } from "react";
+import { fetchCharacter } from "./api/locations/route";
 
 export default function Locations() {
   const [locations, setLocations] = useState([]);
@@ -18,16 +20,24 @@ export default function Locations() {
 
   return (
     <div>
-      {/* <SearchCoins getSearchResults={(results) => setCoins(results)} /> */}
-      {/* <Coins coins={coins} /> */}
-
       <div>
         <ul>
           {locations.map((location: {}, index: number) => (
-            <div key={index} className="grid grid-cols-3">
+            <div
+              key={index}
+              className="grid grid-cols-[auto,auto,auto] gap-y-40"
+            >
               <p>{location.name}</p>
               <p>{location.type}</p>
-              <p>residents {location.residents}</p>
+              <p>
+                {location.residents.map((resident: {}, key: number) => (
+                  <div key={key} className="grid grid-cols-2">
+                    {/* <span> {resident.id}</span> */}
+                    <span>{resident.name}</span>
+                    <span>{resident.status}</span>
+                  </div>
+                ))}
+              </p>
             </div>
           ))}
         </ul>

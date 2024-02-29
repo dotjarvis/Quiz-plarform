@@ -2,22 +2,12 @@ import { NextResponse } from "next/server";
 
 const LOCATION_SOURCE_URL = "https://rickandmortyapi.com/api/location";
 
-// async function fetchLocation() {
-//   try {
-//     const res = await fetch(LOCATION_SOURCE_URL);
-//     const locations = await res.json();
-//     return locations.results;
-//   } catch (error) {
-//     console.error(error);
-//   }
-// }
-
-async function fetchCharacter(request: string) {
+export async function fetchCharacter(request: string) {
   try {
-    const res = await fetch(
-      `https://rickandmortyapi.com/api/character/${request}`
-    );
+    const res = await fetch(`${request}`);
     const character = await res.json();
+
+    console.log(character);
 
     return character;
   } catch (error) {
@@ -26,8 +16,31 @@ async function fetchCharacter(request: string) {
 }
 
 export async function GET() {
-  const res = await fetch("https://rickandmortyapi.com/api/location");
-  const locations = await res.json();
+  const res = await fetch(LOCATION_SOURCE_URL);
+  const data = await res.json();
 
-  return NextResponse.json(locations.results);
+  const locations = data.results.map(async (location) => {
+    const residents = await Promise.all(
+      location.residents.slice(0, 4).map(async (residentUrl) => {
+        const residentResponse = await fetch(residentUrl);
+        const residentData = await residentResponse.json();
+
+        return {
+          id: residentData.id,
+          name: residentData.name,
+          status: residentData.status,
+        };
+      })
+    );
+
+    return {
+      name: location.name,
+      type: location.type,
+      residents,
+    };
+  });
+
+  const locationsWithData = await Promise.all(locations);
+
+  return NextResponse.json(locationsWithData);
 }
