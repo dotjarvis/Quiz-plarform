@@ -20,6 +20,9 @@ export default function Locations() {
 
   return (
     <div>
+      {/* <SearchCoins getSearchResults={(results) => setCoins(results)} /> */}
+      {/* <Coins coins={coins} /> */}
+
       <div>
         <ul>
           {locations.map((location: {}, index: number) => (

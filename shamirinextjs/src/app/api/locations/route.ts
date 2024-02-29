@@ -15,7 +15,7 @@ export async function fetchCharacter(request: string) {
   }
 }
 
-export async function GET() {
+export async function fetchLocation() {
   const res = await fetch(LOCATION_SOURCE_URL);
   const data = await res.json();
 
@@ -40,7 +40,12 @@ export async function GET() {
     };
   });
 
-  const locationsWithData = await Promise.all(locations);
+  const response = await Promise.all(locations);
+  return response;
+}
 
-  return NextResponse.json(locationsWithData);
+export async function GET() {
+  const res = await fetchLocation();
+
+  return NextResponse.json(res);
 }
