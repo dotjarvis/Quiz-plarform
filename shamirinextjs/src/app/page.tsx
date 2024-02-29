@@ -1,18 +1,19 @@
 "use client";
 
-import Locations from "./Locations";
-import SearchLocation from "./SearchLocation";
+import Locations from "./locations/page";
+import SearchLocation from "./locations/search/page";
+
 import { useEffect, useState } from "react";
 
 export default function Home() {
-  const [location, setlocation] = useState([]);
+  const [locations, setlocation] = useState([]);
 
   useEffect(() => {
     const getlocation = async () => {
       const res = await fetch("/api/locations");
       const location = await res.json();
-      setlocation(location);
       console.log(location);
+      setlocation(location);
     };
 
     getlocation();
@@ -24,9 +25,10 @@ export default function Home() {
 
   return (
     <>
+      {/* <Character /> */}
       <SearchLocation getSearchResults={updateLocation} />
 
-      <Locations locations={location} />
+      <Locations locations={locations} />
 
       <h1>Home Page</h1>
     </>

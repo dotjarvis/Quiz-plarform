@@ -13,9 +13,7 @@ export default function SearchLocation({ getSearchResults }: props) {
     e.preventDefault();
 
     const res = await fetch(`/api/locations/search?query=${query}`);
-    console.log(res);
     const location = await res.json();
-    console.log(location);
 
     getSearchResults(location);
   };

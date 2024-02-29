@@ -27,6 +27,7 @@ export async function fetchLocation() {
           id: residentData.id,
           name: residentData.name,
           status: residentData.status,
+          image: residentData.image,
         };
       })
     );
