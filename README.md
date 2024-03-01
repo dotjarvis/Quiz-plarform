@@ -1,27 +1,36 @@
-REST endpoints
+## REST endpoints
+
 I decide to go with REST endpoints because:
-1. REST is easier to work with(Simplicity)
-2. REST has a well established standards
-3. It's what im familiar more
 
-Stack used, Typescript, Next.js & Tailwindcss
-    I chose TypeScript, Next.js, and Tailwind CSS because I'm comfortable with ReactJS,
-    and I wanted to explore new tools to boost my productivity and resourcefullness. 
-    Next.js surprised me with how smoothly it handles both frontend and backend tasks,
-    It booseted my productivity by far plus since it your main stack i chose to get a test of how the stack handles 
-    projects, I'll admit in liking the stack more
-    Opting for Tailwind CSS was a no-brainer; its simplicity in crafting responsive designs, 
-    especially in tandem with Next.js, simplified the styling process.
-    This stack not only showcases my skills in both frontend and backend but also reflects my commitment to creating sleek and efficient web applications.
-    Being resourceull and doing reasearch
+- REST is easier to work with(Simplicity)
+- REST has a well established standards
+- It's what I am familiar with more
 
+## Stack used: Typescript, Next.js & Tailwindcss
 
-Design & Implementation Decisions
+- Reasons
 
+  1. I'm comfortable with ReactJS already and desire to explore productivity-boosting tools
+  2. It's the main stack used in the your projects plus you strongly recommended it
+  3. Need to be resourceful, Next.js surprised me with how smoothly it handles both frontend and backend tasks significantly enhancing productivity.
+  4. Tailwind CSS; its simplicity in crafting responsive designs, especially in tandem with Next.js
+
+## Design & Implementation Decisions
+
+Once there was no design, so I opted for a simple layout design to display data.
+
+Placing the search bar as part of the navigation bar for the website seemed logical, so I decided it would be positioned at the top of the homepage.
+
+I chose to make the location name bigger and bolder as it serves as the introduction to the location section, where residents' names, pictures, and status are displayed.
+
+Selecting a white background with black text ensured easy visibility for users.
+
+For styling the residents' details, I decided to use a grid layout because it's easy to adjust for responsiveness and much simpler to work with.
+
+On the characters page, I maintained the layout with a picture card at the top, followed by text large enough to be easily viewed by users.
 
 ![home](https://github.com/jarvisthedev/shamiri/assets/106377265/655a8708-bc4f-4cf1-993e-159a8f7e6b34)
-![home1](https://github.com/jarvisthedev/shamiri/assets/106377265/c1cb6229-820b-4311-999f-a96c4ebc54d3)
-![char1](https://github.com/jarvisthedev/shamiri/assets/106377265/9a42420b-a68b-445d-9eb8-2e01e521f0b2)
 
-Please document all design and implementation decisions you make in a README.md, including the rationale behind them.
+![home scroll](https://github.com/jarvisthedev/shamiri/assets/106377265/c1cb6229-820b-4311-999f-a96c4ebc54d3)
 
+![character page](https://github.com/jarvisthedev/shamiri/assets/106377265/9a42420b-a68b-445d-9eb8-2e01e521f0b2)
