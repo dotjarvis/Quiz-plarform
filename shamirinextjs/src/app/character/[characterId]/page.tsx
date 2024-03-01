@@ -39,45 +39,47 @@ export default function Character({
     <section className="p-6 my-10">
       <div className=" max-w-7xl mx-auto flex items-center justify-center">
         {character ? (
-          <div className="">
+          <div className="bg-[#fae6e6] rounded-2xl overflow-hidden">
             <Image
               src={character.image}
               alt={character.name}
-              height={240}
-              width={240}
+              height={280}
+              width={280}
               priority
-              className="mb-8"
+              className="mb-4"
             />
-            <p className="text-xl mb-2">
-              {" "}
-              <span className="capitalize font-medium">name:</span>{" "}
-              {character.name}
-            </p>
-            <p className="text-xl mb-2">
-              {" "}
-              <span className="capitalize font-medium">status:</span>{" "}
-              {character.status}
-            </p>
-            <p className="text-xl mb-2">
-              {" "}
-              <span className="capitalize font-medium">species:</span>{" "}
-              {character.species}
-            </p>
-            <p className="text-xl mb-2">
-              {" "}
-              <span className="capitalize font-medium">location:</span>{" "}
-              {character.location?.name ?? "Unknown"}
-            </p>
-            <p className="text-xl mb-2">
-              {" "}
-              <span className="capitalize font-medium">gender:</span>{" "}
-              {character.gender}
-            </p>
-            <p className="text-xl mb-2">
-              {" "}
-              <span className="capitalize font-medium">origin:</span>{" "}
-              {character.origin?.name ?? "Unknown"}
-            </p>
+            <div className="px-3 py-5">
+              <p className="text-xl mb-2">
+                {" "}
+                <span className="capitalize font-medium">name:</span>{" "}
+                {character.name}
+              </p>
+              <p className="text-xl mb-2">
+                {" "}
+                <span className="capitalize font-medium">status:</span>{" "}
+                {character.status}
+              </p>
+              <p className="text-xl mb-2">
+                {" "}
+                <span className="capitalize font-medium">species:</span>{" "}
+                {character.species}
+              </p>
+              <p className="text-xl mb-2">
+                {" "}
+                <span className="capitalize font-medium">location:</span>{" "}
+                {character.location?.name ?? "Unknown"}
+              </p>
+              <p className="text-xl mb-2">
+                {" "}
+                <span className="capitalize font-medium">gender:</span>{" "}
+                {character.gender}
+              </p>
+              <p className="text-xl mb-2">
+                {" "}
+                <span className="capitalize font-medium">origin:</span>{" "}
+                {character.origin?.name ?? "Unknown"}
+              </p>
+            </div>
           </div>
         ) : (
           <div>

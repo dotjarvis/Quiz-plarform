@@ -35,11 +35,11 @@ export default function Locations({ locations }: Props) {
                   {location.name}
                 </h2>
                 <p className="text-center mb-8 text-2xl">{location.type}</p>
-                <div className="grid grid-cols-5 gap-x-4 gap-y-7">
+                <div className="grid grid-cols-5 gap-x-8 gap-y-7">
                   {location.residents.map(
                     (resident: Character, key: number) => (
                       <Link href={`/character/${resident.id}`}>
-                        <div key={key} className=" flex flex-col items-center">
+                        <div key={key} className="flex flex-col items-center">
                           <Image
                             src={resident.image}
                             alt={resident.name}
