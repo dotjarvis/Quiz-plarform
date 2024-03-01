@@ -19,7 +19,7 @@ export async function fetchLocation() {
 
   const locations = data.results.map(async (location) => {
     const residents = await Promise.all(
-      location.residents.slice(0, 4).map(async (residentUrl) => {
+      location.residents.slice(0, 8).map(async (residentUrl) => {
         const residentResponse = await fetch(residentUrl);
         const residentData = await residentResponse.json();
 

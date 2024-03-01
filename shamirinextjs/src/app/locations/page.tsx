@@ -25,41 +25,53 @@ type Props = {
 
 export default function Locations({ locations }: Props) {
   return (
-    <div>
-      {locations ? (
-        <ul>
-          {locations.map((location: Location, index: number) => (
-            <div
-              key={index}
-              className="grid grid-cols-[auto,auto,auto] gap-y-40"
-            >
-              <p>{location.name}</p>
-              <p>{location.type}</p>
-              <p>
-                {location.residents.map((resident: Character, key: number) => (
-                  <Link href={`/character/${resident.id}`}>
-                    <div key={key} className="grid grid-cols-2">
-                      <span>{resident.name}</span>
-                      <span>{resident.status}</span>
-                      <Image
-                        src={resident.image}
-                        alt={resident.name}
-                        height={70}
-                        width={70}
-                        priority
-                      />
-                    </div>
-                  </Link>
-                ))}
-              </p>
-            </div>
-          ))}
-        </ul>
-      ) : (
-        <>
-          <p>Location does not exist</p>
-        </>
-      )}
-    </div>
+    <section className="p-6 my-10">
+      <div className=" max-w-7xl mx-auto">
+        {locations ? (
+          <ul className="flex flex-col gap-16">
+            {locations.map((location: Location, index: number) => (
+              <li key={index} className="">
+                <h2 className="text-center mb-2 text-3xl font-semibold">
+                  {location.name}
+                </h2>
+                <p className="text-center mb-8 text-2xl">{location.type}</p>
+                <div className="grid grid-cols-5 gap-x-4 gap-y-7">
+                  {location.residents.map(
+                    (resident: Character, key: number) => (
+                      <Link href={`/character/${resident.id}`}>
+                        <div key={key} className=" flex flex-col items-center">
+                          <Image
+                            src={resident.image}
+                            alt={resident.name}
+                            height={150}
+                            width={150}
+                            priority
+                            className="mb-2"
+                          />
+                          <p>
+                            <span className="text-base font-medium">Name:</span>{" "}
+                            {resident.name}
+                          </p>
+                          <p>
+                            <span className="text-base font-medium">
+                              Status:
+                            </span>{" "}
+                            {resident.status}
+                          </p>
+                        </div>
+                      </Link>
+                    )
+                  )}
+                </div>
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <>
+            <p>Location does not exist</p>
+          </>
+        )}
+      </div>
+    </section>
   );
 }

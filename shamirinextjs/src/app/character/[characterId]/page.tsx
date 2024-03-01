@@ -36,28 +36,55 @@ export default function Character({
   }, [params]);
 
   return (
-    <>
-      {character ? (
-        <div>
-          <p>name: {character.name}</p>
-          <p>status: {character.status}</p>
-          <p>species: {character.species}</p>
-          <p>location: {character.location?.name ?? "Unknown"}</p>
-          <p>gender: {character.gender}</p>
-          <p>origin: {character.origin?.name ?? "Unknown"}</p>
-          <Image
-            src={character.image}
-            alt={character.name}
-            height={70}
-            width={70}
-            priority
-          />
-        </div>
-      ) : (
-        <div>
-          <p>Loading</p>
-        </div>
-      )}
-    </>
+    <section className="p-6 my-10">
+      <div className=" max-w-7xl mx-auto flex items-center justify-center">
+        {character ? (
+          <div className="">
+            <Image
+              src={character.image}
+              alt={character.name}
+              height={240}
+              width={240}
+              priority
+              className="mb-8"
+            />
+            <p className="text-xl mb-2">
+              {" "}
+              <span className="capitalize font-medium">name:</span>{" "}
+              {character.name}
+            </p>
+            <p className="text-xl mb-2">
+              {" "}
+              <span className="capitalize font-medium">status:</span>{" "}
+              {character.status}
+            </p>
+            <p className="text-xl mb-2">
+              {" "}
+              <span className="capitalize font-medium">species:</span>{" "}
+              {character.species}
+            </p>
+            <p className="text-xl mb-2">
+              {" "}
+              <span className="capitalize font-medium">location:</span>{" "}
+              {character.location?.name ?? "Unknown"}
+            </p>
+            <p className="text-xl mb-2">
+              {" "}
+              <span className="capitalize font-medium">gender:</span>{" "}
+              {character.gender}
+            </p>
+            <p className="text-xl mb-2">
+              {" "}
+              <span className="capitalize font-medium">origin:</span>{" "}
+              {character.origin?.name ?? "Unknown"}
+            </p>
+          </div>
+        ) : (
+          <div>
+            <p>Loading</p>
+          </div>
+        )}
+      </div>
+    </section>
   );
 }

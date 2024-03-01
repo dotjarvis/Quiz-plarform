@@ -19,16 +19,19 @@ export default function SearchLocation({ getSearchResults }: props) {
   };
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          placeholder="Search location..."
-          value={query}
-          onChange={(e) => setQuery(e.target.value)}
-        />
-        <button type="submit">Search</button>
-      </form>
-    </div>
+    <section className="p-6">
+      <div className="mx-auto">
+        <form onSubmit={handleSubmit} className="text-center">
+          <input
+            className="border p-2 text-base rounded-xl border-black mr-4"
+            type="text"
+            placeholder="Search location..."
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+          />
+          <button type="submit">Search</button>
+        </form>
+      </div>
+    </section>
   );
 }

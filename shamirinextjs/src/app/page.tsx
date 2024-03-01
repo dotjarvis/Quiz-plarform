@@ -11,9 +11,8 @@ export default function Home() {
   useEffect(() => {
     const getlocation = async () => {
       const res = await fetch("/api/locations");
-      const location = await res.json();
-      console.log(location);
-      setlocation(location);
+      const locations = await res.json();
+      setlocation(locations);
     };
 
     getlocation();
@@ -25,12 +24,8 @@ export default function Home() {
 
   return (
     <>
-      {/* <Character /> */}
       <SearchLocation getSearchResults={updateLocation} />
-
       <Locations locations={locations} />
-
-      <h1>Home Page</h1>
     </>
   );
 }
