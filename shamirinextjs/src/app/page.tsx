@@ -19,7 +19,7 @@ export default function Home() {
     getlocation();
   }, []);
 
-  const updateLocation = (results) => {
+  const updateLocation = (results: any) => {
     setlocation(results);
   };
 

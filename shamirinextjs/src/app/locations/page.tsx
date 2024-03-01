@@ -1,12 +1,34 @@
 import Image from "next/image";
 import Link from "next/link";
-import Character from "../character/[id]/page";
-export default function Locations({ locations }) {
+import Character from "../character/[characterId]/page";
+
+type Location = {
+  id: number;
+  name: string;
+  type: string;
+  dimension: string;
+  residents: [];
+};
+
+type Character = {
+  id: number;
+  name: string;
+  status: string;
+  species: string;
+  gender: string;
+  image: string;
+};
+
+type Props = {
+  locations: Location[];
+};
+
+export default function Locations({ locations }: Props) {
   return (
     <div>
       {locations ? (
         <ul>
-          {locations.map((location: {}, index: number) => (
+          {locations.map((location: Location, index: number) => (
             <div
               key={index}
               className="grid grid-cols-[auto,auto,auto] gap-y-40"
@@ -14,7 +36,7 @@ export default function Locations({ locations }) {
               <p>{location.name}</p>
               <p>{location.type}</p>
               <p>
-                {location.residents.map((resident: {}, key: number) => (
+                {location.residents.map((resident: Character, key: number) => (
                   <Link href={`/character/${resident.id}`}>
                     <div key={key} className="grid grid-cols-2">
                       <span>{resident.name}</span>

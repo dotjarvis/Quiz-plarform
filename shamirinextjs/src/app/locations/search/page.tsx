@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { FormEvent, useState } from "react";
 
 type props = {
   getSearchResults: (locations: []) => void;
@@ -9,7 +9,7 @@ type props = {
 export default function SearchLocation({ getSearchResults }: props) {
   const [query, setQuery] = useState("");
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     const res = await fetch(`/api/locations/search?query=${query}`);
